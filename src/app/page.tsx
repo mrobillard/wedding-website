@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { SubscribeForm } from "@/components/SubscribeForm";
 
 const heroImage = "/hero.jpg";
 

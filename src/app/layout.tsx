@@ -25,8 +25,6 @@ const script = Allura({
 
 export const metadata: Metadata = {
   title: "Matt & Ashley — May 31, 2026",
-  description:
-    "Celebrate with Matt & Ashley. Share your email for updates on festivities and travel plans.",
 };
 
 export default function RootLayout({
