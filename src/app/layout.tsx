@@ -25,6 +25,15 @@ const script = Allura({
 
 export const metadata: Metadata = {
   title: "Matt & Ashley — May 31, 2026",
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+      noimageindex: true,
+    },
+  },
 };
 
 export default function RootLayout({
