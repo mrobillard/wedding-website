@@ -9,7 +9,7 @@ const collectionName = process.env.MONGODB_COLLECTION || "updates";
 
 export async function POST(request: Request) {
   try {
-    const { email } = await request.json();
+    const { email, name } = await request.json();
     if (!email || !emailPattern.test(String(email).trim())) {
       return NextResponse.json(
         { error: "Please provide a valid email address." },
@@ -18,6 +18,10 @@ export async function POST(request: Request) {
     }
 
     const normalizedEmail = String(email).trim().toLowerCase();
+    const normalizedName =
+      typeof name === "string" && name.trim().length > 0
+        ? name.trim()
+        : undefined;
     const client = await getMongoClient();
     const db = client.db(databaseName);
     const collection = db.collection(collectionName);
@@ -32,6 +36,7 @@ export async function POST(request: Request) {
 
     await collection.insertOne({
       email: normalizedEmail,
+      name: normalizedName,
       source: "splash",
       createdAt: new Date(),
     });

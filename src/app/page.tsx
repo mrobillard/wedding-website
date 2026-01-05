@@ -1,9 +1,9 @@
 import Image from "next/image";
+import { NotifyForm } from "@/components/NotifyForm";
 
 const heroImage = "/hero.jpg";
 
 export default function Home() {
-
   return (
     <div className="min-h-screen bg-[var(--background)] text-foreground">
       <header className="mx-auto flex max-w-5xl flex-col items-center gap-6 px-6 pt-14 pb-8 text-center">
@@ -34,6 +34,8 @@ export default function Home() {
             May 31, 2026
           </p>
         </div>
+
+        <NotifyForm />
       </main>
     </div>
   );
