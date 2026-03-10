@@ -328,7 +328,7 @@ export default function Home() {
             Will you <em>join us?</em>
           </h2>
           <p className="body-txt" style={{ maxWidth: "420px", margin: "0 auto 40px" }}>
-            Kindly reply by March 1, 2026.
+            Kindly reply by March 31, 2026.
           </p>
           <form className="rsvp-form" onSubmit={handleRSVPSubmit} ref={rsvpFormRef}>
             <div className="rsvp-row">
@@ -492,7 +492,7 @@ export default function Home() {
             <div className="t-card">
               <p className="t-title">Parking &amp; Rideshare</p>
               <p className="t-body">
-                Complimentary parking is available on-site at The Clifton. We encourage ridesharing when possible.
+                Complimentary parking is available on-site at The Clifton, but limited. We encourage carpooling and ridesharing when possible.
               </p>
             </div>
           </div>
