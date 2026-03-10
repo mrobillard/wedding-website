@@ -390,7 +390,7 @@ export default function Home() {
                 Meal Preference
               </option>
               <option value="filet">Filet Mignon, Roasted Potatoes, Green Beans, with a Bordelaise Sauce</option>
-              <option value="halibut">Maryland Crab Cake with Rice Pilaf and a Summer Vegetable Medley</option>
+              <option value="crabcake">Maryland Crab Cake with Rice Pilaf and a Summer Vegetable Medley</option>
               <option value="risotto">Risotto Primavera (V)</option>
               <option value="dietary-note">Dietary restriction — please note below</option>
             </select>
