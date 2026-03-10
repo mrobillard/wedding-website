@@ -26,9 +26,9 @@ export default function Home() {
   const [rsvpLast, setRsvpLast] = useState("");
   const [rsvpEmail, setRsvpEmail] = useState("");
   const [rsvpAttending, setRsvpAttending] = useState("");
-  const [rsvpGuestNames, setRsvpGuestNames] = useState("");
-  const [rsvpMeal, setRsvpMeal] = useState("");
-  const [rsvpDietary, setRsvpDietary] = useState("");
+  const [rsvpGuests, setRsvpGuests] = useState<
+    { name: string; meal: string; note?: string }[]
+  >([{ name: "", meal: "", note: "" }]);
   const [rsvpState, setRsvpState] = useState<
     | { status: "idle" }
     | { status: "submitting" }
@@ -85,6 +85,17 @@ export default function Home() {
     event.preventDefault();
     setRsvpState({ status: "submitting" });
     try {
+      if (
+        rsvpAttending === "accepts" &&
+        rsvpGuests.some((g) => !g.name.trim() || !g.meal.trim())
+      ) {
+        setRsvpState({
+          status: "error",
+          message: "Please add a name and meal for each attending guest.",
+        });
+        return;
+      }
+
       const response = await fetch("/api/rsvp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -93,9 +104,7 @@ export default function Home() {
           lastName: rsvpLast,
           email: rsvpEmail,
           attending: rsvpAttending,
-          guestNames: rsvpGuestNames,
-          mealPreference: rsvpMeal,
-          dietaryNote: rsvpDietary,
+          guests: rsvpAttending === "accepts" ? rsvpGuests : [],
         }),
       });
       const body = await response.json();
@@ -106,9 +115,7 @@ export default function Home() {
       setRsvpLast("");
       setRsvpEmail("");
       setRsvpAttending("");
-      setRsvpGuestNames("");
-      setRsvpMeal("");
-      setRsvpDietary("");
+      setRsvpGuests([{ name: "", meal: "", note: "" }]);
       setRsvpState({
         status: "success",
         message: body?.message || "Thank you — we can’t wait to celebrate with you.",
@@ -277,7 +284,7 @@ export default function Home() {
               Meet &amp; <em>Greet</em>
             </h2>
             <p className="body-txt">
-              Join us at Zocalo for a warm, casual welcome to kick off the weekend! We’ll have a reserved area marked with a sign, and the bar will be open with food and beverages available for
+              Join us at Zocalo for a warm, casual welcome to kick off the weekend! We’ll have a reserved area marked with a sign and there will be food and beverages available for
               individual purchase. We'd love the chance to say hello and catch up before the big day. Zocalo is located on the Downtown Mall, just a short walk from the Omni.
             </p>
           </div>
@@ -370,40 +377,70 @@ export default function Home() {
               <option value="declines">Regretfully declines</option>
             </select>
             {rsvpAttending === "accepts" && (
-              <textarea
-                className="rsvp-input"
-                placeholder="Names of all attending guests"
-                rows={2}
-                required
-                value={rsvpGuestNames}
-                onChange={(e) => setRsvpGuestNames(e.target.value)}
-                style={{ resize: "vertical" }}
-              />
-            )}
-            <select
-              className="rsvp-input"
-              required={rsvpAttending === "accepts"}
-              value={rsvpMeal}
-              onChange={(e) => setRsvpMeal(e.target.value)}
-            >
-              <option value="" disabled>
-                Meal Preference
-              </option>
-              <option value="filet">Filet Mignon, Roasted Potatoes, Green Beans, with a Bordelaise Sauce</option>
-              <option value="crabcake">Maryland Crab Cake with Rice Pilaf and a Summer Vegetable Medley</option>
-              <option value="risotto">Risotto Primavera (V)</option>
-              <option value="dietary-note">Dietary restriction — please note below</option>
-            </select>
-            {rsvpMeal === "dietary-note" && (
-              <textarea
-                className="rsvp-input"
-                placeholder="Dietary needs or restrictions"
-                rows={3}
-                required
-                value={rsvpDietary}
-                onChange={(e) => setRsvpDietary(e.target.value)}
-                style={{ resize: "vertical" }}
-              />
+              <div className="guest-stack">
+                {rsvpGuests.map((guest, idx) => (
+                  <div
+                    key={idx}
+                    style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px", marginBottom: "12px" }}
+                  >
+                    <input
+                      type="text"
+                      className="rsvp-input"
+                      placeholder="Guest name"
+                      value={guest.name}
+                      onChange={(e) => {
+                        const next = [...rsvpGuests];
+                        next[idx] = { ...next[idx], name: e.target.value };
+                        setRsvpGuests(next);
+                      }}
+                      required
+                    />
+                    <select
+                      className="rsvp-input"
+                      value={guest.meal}
+                      onChange={(e) => {
+                        const next = [...rsvpGuests];
+                        next[idx] = { ...next[idx], meal: e.target.value };
+                        setRsvpGuests(next);
+                      }}
+                      required
+                    >
+                      <option value="" disabled>
+                        Meal Preference
+                      </option>
+                      <option value="filet">Filet Mignon, Roasted Potatoes, Green Beans, with a Bordelaise Sauce</option>
+                      <option value="crabcake">Maryland Crab Cake with Rice Pilaf and a Summer Vegetable Medley</option>
+                      <option value="risotto">Risotto Primavera (V)</option>
+                      <option value="dietary-note">Dietary restriction — please note below</option>
+                    </select>
+                    {guest.meal === "dietary-note" && (
+                      <textarea
+                        className="rsvp-input"
+                        placeholder="Dietary needs or restrictions for this guest"
+                        rows={2}
+                        value={guest.note || ""}
+                        onChange={(e) => {
+                          const next = [...rsvpGuests];
+                          next[idx] = { ...next[idx], note: e.target.value };
+                          setRsvpGuests(next);
+                        }}
+                        style={{ gridColumn: "1 / -1", resize: "vertical" }}
+                        required
+                      />
+                    )}
+                  </div>
+                ))}
+                <div style={{ textAlign: "left" }}>
+                  <button
+                    type="button"
+                    className="t-badge"
+                    onClick={() => setRsvpGuests([...rsvpGuests, { name: "", meal: "", note: "" }])}
+                    style={{ marginTop: "4px" }}
+                  >
+                    Add another guest
+                  </button>
+                </div>
+              </div>
             )}
             <div style={{ textAlign: "center", marginTop: "10px" }}>
               <button type="submit" className="btn btn-fill" disabled={rsvpState.status === "submitting"}>

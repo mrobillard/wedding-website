@@ -9,8 +9,7 @@ const collectionName = process.env.MONGODB_RSVP_COLLECTION || "rsvps";
 
 export async function POST(request: Request) {
   try {
-    const { firstName, lastName, email, attending, guestNames, mealPreference } =
-      await request.json();
+    const { firstName, lastName, email, attending, guests } = await request.json();
 
     if (!email || !emailPattern.test(String(email).trim())) {
       return NextResponse.json(
@@ -24,13 +23,21 @@ export async function POST(request: Request) {
     const db = client.db(databaseName);
     const collection = db.collection(collectionName);
 
+    const guestEntries =
+      Array.isArray(guests) && guests.length
+        ? guests.map((g: any) => ({
+            name: g?.name?.toString().trim() || "",
+            meal: g?.meal?.toString().trim() || "",
+            note: g?.note?.toString().trim() || "",
+          }))
+        : [];
+
     await collection.insertOne({
       firstName: firstName?.toString().trim() || "",
       lastName: lastName?.toString().trim() || "",
       email: normalizedEmail,
       attending: attending?.toString().trim() || "",
-      guestNames: guestNames?.toString().trim() || "",
-      mealPreference: mealPreference?.toString().trim() || "",
+      guests: guestEntries,
       createdAt: new Date(),
     });
 
