@@ -7,8 +7,8 @@ import "./page.css";
 const navLinks = [
   { href: "#story", label: "Our Story" },
   { href: "#details", label: "Details" },
-  { href: "#meetgreet", label: "Meet & Greet" },
   { href: "#rsvp", label: "RSVP" },
+  { href: "#meetgreet", label: "Meet & Greet" },
   { href: "#travel", label: "Travel" },
 ];
 
