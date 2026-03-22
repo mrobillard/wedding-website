@@ -541,7 +541,7 @@ export default function Home() {
               <p className="mg-val">
                 No RSVP required.
                 <br />
-                Food &amp; drinks available for purchase.
+                Parking is available at the Market Street or Water Street garages.
               </p>
             </div>
           </div>
