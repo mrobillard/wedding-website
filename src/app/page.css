@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -66,10 +68,8 @@ nav {
   justify-content: center;
   text-align: center;
   padding: 140px 40px 100px;
-  background: linear-gradient(
-      rgba(245, 240, 234, 0.86),
-      rgba(245, 240, 234, 0.9)
-    ),
+  background:
+    linear-gradient(rgba(245, 240, 234, 0.86), rgba(245, 240, 234, 0.9)),
     url("/mattandash_clifton.jpg");
   background-size: cover;
   background-position: center;
@@ -156,8 +156,6 @@ nav {
 .scroll-cue {
   position: absolute;
   bottom: 36px;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -593,7 +591,9 @@ footer {
 .fi {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.9s ease, transform 0.9s ease;
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s ease;
 }
 
 .fi.on {

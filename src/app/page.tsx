@@ -118,7 +118,8 @@ export default function Home() {
       setRsvpGuests([{ name: "", meal: "", note: "" }]);
       setRsvpState({
         status: "success",
-        message: body?.message || "Thank you — we can’t wait to celebrate with you.",
+        message:
+          body?.message || "Thank you — we can’t wait to celebrate with you.",
       });
       if (rsvpFormRef.current) rsvpFormRef.current.style.display = "none";
       if (rsvpOkRef.current) rsvpOkRef.current.style.display = "block";
@@ -126,7 +127,9 @@ export default function Home() {
       setRsvpState({
         status: "error",
         message:
-          error instanceof Error ? error.message : "We couldn't save your RSVP. Please try again.",
+          error instanceof Error
+            ? error.message
+            : "We couldn't save your RSVP. Please try again.",
       });
     }
   };
@@ -162,7 +165,14 @@ export default function Home() {
         <div className="hero-line" />
         <div className="hero-meta">
           <p className="hero-date">Sunday, the thirty-first of May</p>
-          <p className="hero-date" style={{ fontSize: "1.5rem", letterSpacing: "0.14em", marginTop: "4px" }}>
+          <p
+            className="hero-date"
+            style={{
+              fontSize: "1.5rem",
+              letterSpacing: "0.14em",
+              marginTop: "4px",
+            }}
+          >
             2026
           </p>
           <p className="hero-venue">The Clifton · Charlottesville, Virginia</p>
@@ -218,10 +228,17 @@ export default function Home() {
               How it all <em>began</em>
             </h2>
             <p className="body-txt">
-              We were introduced by some very dear friends in 2020 — right in the middle of a world that felt upside down. Since then, we’ve taken some big risks, navigated new chapters, racked up countless frequent-flyer miles, and collected more than a few new zip codes. Our path hasn’t been traditional, but it’s been ours — full of growth, laughter, and choosing each other again and again.
+              We were introduced by some very dear friends in 2020 — right in
+              the middle of a world that felt upside down. Since then, we’ve
+              taken some big risks, navigated new chapters, racked up countless
+              frequent-flyer miles, and collected more than a few new zip codes.
+              Our path hasn’t been traditional, but it’s been ours — full of
+              growth, laughter, and choosing each other again and again.
             </p>
             <p className="body-txt">
-              We’re so grateful for the people who’ve supported us along the way, and we can’t wait to celebrate the beginning of our forever with you.
+              We’re so grateful for the people who’ve supported us along the
+              way, and we can’t wait to celebrate the beginning of our forever
+              with you.
             </p>
           </div>
         </div>
@@ -233,7 +250,9 @@ export default function Home() {
           <h2 className="hd">
             The <em>Celebration</em>
           </h2>
-          <p className="body-txt">We can’t wait to share this day with the people we love most.</p>
+          <p className="body-txt">
+            We can’t wait to share this day with the people we love most.
+          </p>
         </div>
         <div className="details-grid fi" ref={registerFi}>
           <div className="d-card">
@@ -243,7 +262,9 @@ export default function Home() {
               <br />
               May 31, 2026
             </p>
-            <p className="d-body">We hope you’ll join us for this special celebration.</p>
+            <p className="d-body">
+              We hope you’ll join us for this special celebration.
+            </p>
           </div>
           <div className="d-card">
             <span className="d-tag">Ceremony</span>
@@ -257,10 +278,24 @@ export default function Home() {
               <br />
               Charlottesville, VA 22911
             </p>
-            <p className="d-body" style={{ fontStyle: "italic", color: "var(--foreground-light)" }}>
-              Reception to follow
+            <p
+              className="d-body"
+              style={{ fontStyle: "italic", color: "var(--foreground-light)" }}
+            >
+              Cocktail hour & dinner reception to follow
             </p>
-            <a href="https://maps.google.com/?q=The+Clifton+Charlottesville+VA" target="_blank" className="d-link" rel="noreferrer">
+            <p
+              className="d-body"
+              style={{ fontStyle: "italic", color: "var(--foreground-light)", fontSize: "0.95rem" }}
+            >
+              Guests kindly seated by 4:45 pm
+            </p>
+            <a
+              href="https://maps.google.com/?q=The+Clifton+Charlottesville+VA"
+              target="_blank"
+              className="d-link"
+              rel="noreferrer"
+            >
               Get Directions
             </a>
           </div>
@@ -271,59 +306,10 @@ export default function Home() {
               <br />
               Attire
             </p>
-            <p className="d-body">Semi-formal dress encouraged. Garden-friendly footwear recommended.</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="mg-wrap" id="meetgreet">
-        <div className="mg-inner fi" ref={registerFi}>
-          <div>
-            <span className="lbl">The Night Before</span>
-            <h2 className="hd">
-              Meet &amp; <em>Greet</em>
-            </h2>
-            <p className="body-txt">
-              Join us at Zocalo for a warm, casual welcome to kick off the weekend! We’ll have a reserved area marked with a sign and there will be food and beverages available for
-              individual purchase. We'd love the chance to say hello and catch up before the big day. Zocalo is located on the Downtown Mall, just a short walk from the Omni.
+            <p className="d-body">
+              Semi-formal dress encouraged. Garden-friendly footwear
+              recommended.
             </p>
-          </div>
-          <div className="mg-details">
-            <div className="mg-item">
-              <span className="d-tag">When</span>
-              <p className="mg-val">
-                Saturday, May 30, 2026
-                <br />
-                7:00 – 9:00 pm
-              </p>
-            </div>
-            <div className="mg-item">
-              <span className="d-tag">Where</span>
-              <p className="mg-val">
-                Zocalo
-                <br />
-                201 E Main St, Unit E
-                <br />
-                Charlottesville, VA 22902
-              </p>
-              <a
-                href="https://maps.google.com/?q=201+E+Main+St+Charlottesville+VA"
-                target="_blank"
-                className="d-link"
-                rel="noreferrer"
-                style={{ marginTop: "10px", display: "inline-block" }}
-              >
-                Get Directions
-              </a>
-            </div>
-            <div className="mg-item">
-              <span className="d-tag">Details</span>
-              <p className="mg-val">
-                No RSVP required.
-                <br />
-                Food &amp; drinks available for purchase.
-              </p>
-            </div>
           </div>
         </div>
       </div>
@@ -334,10 +320,17 @@ export default function Home() {
           <h2 className="hd">
             Will you <em>join us?</em>
           </h2>
-          <p className="body-txt" style={{ maxWidth: "420px", margin: "0 auto 40px" }}>
+          <p
+            className="body-txt"
+            style={{ maxWidth: "420px", margin: "0 auto 40px" }}
+          >
             Kindly reply by March 31, 2026.
           </p>
-          <form className="rsvp-form" onSubmit={handleRSVPSubmit} ref={rsvpFormRef}>
+          <form
+            className="rsvp-form"
+            onSubmit={handleRSVPSubmit}
+            ref={rsvpFormRef}
+          >
             <div className="rsvp-row">
               <input
                 type="text"
@@ -381,7 +374,12 @@ export default function Home() {
                 {rsvpGuests.map((guest, idx) => (
                   <div
                     key={idx}
-                    style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px", marginBottom: "12px" }}
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "1fr 1fr",
+                      gap: "12px",
+                      marginBottom: "12px",
+                    }}
                   >
                     <input
                       type="text"
@@ -408,10 +406,18 @@ export default function Home() {
                       <option value="" disabled>
                         Meal Preference
                       </option>
-                      <option value="filet">Filet Mignon, Roasted Potatoes, Green Beans, with a Bordelaise Sauce</option>
-                      <option value="crabcake">Maryland Crab Cake with Rice Pilaf and a Summer Vegetable Medley</option>
+                      <option value="filet">
+                        Filet Mignon, Roasted Potatoes, Green Beans, with a
+                        Bordelaise Sauce
+                      </option>
+                      <option value="crabcake">
+                        Maryland Crab Cake with Rice Pilaf and a Summer
+                        Vegetable Medley
+                      </option>
                       <option value="risotto">Risotto Primavera (V)</option>
-                      <option value="dietary-note">Dietary restriction — please note below</option>
+                      <option value="dietary-note">
+                        Dietary restriction — please note below
+                      </option>
                     </select>
                     {guest.meal === "dietary-note" && (
                       <textarea
@@ -434,7 +440,12 @@ export default function Home() {
                   <button
                     type="button"
                     className="t-badge"
-                    onClick={() => setRsvpGuests([...rsvpGuests, { name: "", meal: "", note: "" }])}
+                    onClick={() =>
+                      setRsvpGuests([
+                        ...rsvpGuests,
+                        { name: "", meal: "", note: "" },
+                      ])
+                    }
                     style={{ marginTop: "4px" }}
                   >
                     Add another guest
@@ -443,7 +454,11 @@ export default function Home() {
               </div>
             )}
             <div style={{ textAlign: "center", marginTop: "10px" }}>
-              <button type="submit" className="btn btn-fill" disabled={rsvpState.status === "submitting"}>
+              <button
+                type="submit"
+                className="btn btn-fill"
+                disabled={rsvpState.status === "submitting"}
+              >
                 {rsvpState.status === "submitting" ? "Sending..." : "Send RSVP"}
               </button>
             </div>
@@ -460,13 +475,76 @@ export default function Home() {
               color: "var(--sage)",
             }}
           >
-            Thank you — we can’t wait to celebrate with you. 
+            Thank you — we can’t wait to celebrate with you.
           </div>
           {rsvpState.status === "error" && (
-            <p className="body-txt" style={{ marginTop: "20px", color: "#b00020", fontSize: "0.95rem" }}>
+            <p
+              className="body-txt"
+              style={{
+                marginTop: "20px",
+                color: "#b00020",
+                fontSize: "0.95rem",
+              }}
+            >
               {rsvpState.message}
             </p>
           )}
+        </div>
+      </div>
+
+      <div className="mg-wrap" id="meetgreet">
+        <div className="mg-inner fi" ref={registerFi}>
+          <div>
+            <span className="lbl">The Night Before</span>
+            <h2 className="hd">
+              Meet &amp; <em>Greet</em>
+            </h2>
+            <p className="body-txt">
+              Join us at Zocalo for a warm, casual welcome to kick off the
+              weekend! We’ll have a reserved area marked with a sign and there
+              will be food and beverages available for individual purchase. We’d
+              love the chance to say hello and catch up before the big day.
+              Zocalo is located on the Downtown Mall, just a short walk from the
+              Omni.
+            </p>
+          </div>
+          <div className="mg-details">
+            <div className="mg-item">
+              <span className="d-tag">When</span>
+              <p className="mg-val">
+                Saturday, May 30, 2026
+                <br />
+                7:00 – 9:00 pm
+              </p>
+            </div>
+            <div className="mg-item">
+              <span className="d-tag">Where</span>
+              <p className="mg-val">
+                Zocalo
+                <br />
+                201 E Main St, Unit E
+                <br />
+                Charlottesville, VA 22902
+              </p>
+              <a
+                href="https://maps.google.com/?q=201+E+Main+St+Charlottesville+VA"
+                target="_blank"
+                className="d-link"
+                rel="noreferrer"
+                style={{ marginTop: "10px", display: "inline-block" }}
+              >
+                Get Directions
+              </a>
+            </div>
+            <div className="mg-item">
+              <span className="d-tag">Details</span>
+              <p className="mg-val">
+                No RSVP required.
+                <br />
+                Food &amp; drinks available for purchase.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -477,7 +555,8 @@ export default function Home() {
             Travel &amp; <em>Stay</em>
           </h2>
           <p className="body-txt" style={{ maxWidth: "500px" }}>
-            We hope you’ll make a weekend of it — Charlottesville is a beautiful place to explore. 
+            We hope you’ll make a weekend of it — Charlottesville is a beautiful
+            place to explore.
           </p>
           <div className="travel-grid">
             <div className="t-card">
@@ -488,7 +567,8 @@ export default function Home() {
                 Charlottesville, VA 22903
                 <br />
                 <br />
-                Our recommended stay - central to the downtown mall in the heart of Charlottesville.
+                Our recommended stay - central to the downtown mall in the heart
+                of Charlottesville.
               </p>
               <a
                 href="https://www.omnihotels.com/hotels/charlottesville"
@@ -500,14 +580,16 @@ export default function Home() {
               </a>
             </div>
             <div className="t-card">
-              <p className="t-title">Residence Inn by Marriott Charlottesville Downtown</p>
+              <p className="t-title">
+                Residence Inn by Marriott Charlottesville Downtown
+              </p>
               <p className="t-body">
                 315 W Main St
                 <br />
                 Charlottesville, VA 22903
                 <br />
-                <br />
-                A charming nearby alternative with easy access to the venue and local dining.
+                <br />A charming nearby alternative with easy access to the
+                venue and local dining.
               </p>
               <a
                 href="https://www.marriott.com/en-us/hotels/chodt-residence-inn-charlottesville-downtown/overview/"
@@ -521,7 +603,10 @@ export default function Home() {
             <div className="t-card">
               <p className="t-title">Getting There</p>
               <p className="t-body">
-                <strong>By Air</strong> — We recommend flying into Charlottesville Albemarle (CHO), the closest option to the venue, or Richmond (RIC), about 45 minutes away. Dulles (IAD) is also an option, approximately 1.5 hours away.
+                <strong>By Air</strong> — We recommend flying into
+                Charlottesville Albemarle (CHO), the closest option to the
+                venue, or Richmond (RIC), about 45 minutes away. Dulles (IAD) is
+                also an option, approximately 1.5 hours away.
                 <br />
                 <br />
               </p>
@@ -529,7 +614,8 @@ export default function Home() {
             <div className="t-card">
               <p className="t-title">Parking &amp; Rideshare</p>
               <p className="t-body">
-                Complimentary parking is available on-site at The Clifton, but limited. We encourage carpooling and ridesharing when possible.
+                Complimentary parking is available on-site at The Clifton, but
+                limited. We encourage carpooling and ridesharing when possible.
               </p>
             </div>
           </div>
